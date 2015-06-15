@@ -1,0 +1,71 @@
+﻿<grammar version="1.0" xml:lang="en-US" root="rootRule" tag-format="semantics/1.0-literals" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="rootRule" scope="public">
+    <one-of>
+      <item>
+        <tag>START</tag>
+        <one-of>
+          <item>start</item>
+          <item>start programming</item>
+        </one-of>
+      </item>
+      
+      <item>
+        <tag>STOP</tag>
+        <one-of>
+          <item>stop programming</item>
+        </one-of>
+      </item>
+      
+      <!-- SKELETON COMMANDS -->
+      <item>
+        <tag>SHOW</tag>
+        <one-of>
+          <item>show</item>
+        </one-of>
+      </item>
+      <item>
+        <tag>HIDE</tag>
+        <one-of>
+          <item>hide</item>
+        </one-of>
+      </item>
+      
+      <!-- DIRECTIONS -->
+      <item>
+        <tag>MOVE_FORWARD</tag>
+        <one-of>
+          <item> forwards </item>
+          <item> forward </item>
+          <item> straight </item>
+          <item> move forward </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>MOVE_BACKWARD</tag>
+        <one-of>
+          <item> backward </item>
+          <item> backwards </item>
+          <item> back </item>
+          <item> go backwards </item>
+          <item> move backwards </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>MOVE_LEFT</tag>
+        <one-of>
+          <item> turn left </item>
+          <item> go left </item>
+          <item> left </item>
+        </one-of>
+      </item>
+      <item>
+        <tag>MOVE_RIGHT</tag>
+        <one-of>
+          <item> turn right </item>
+          <item> go right </item>
+          <item> right </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+</grammar>

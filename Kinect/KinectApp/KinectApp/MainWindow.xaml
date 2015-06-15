@@ -1,0 +1,163 @@
+﻿<Window x:Class="KinectApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kt="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+        xmlns:controls="clr-namespace:KinectApp.Controls"
+        xmlns:p="clr-namespace:KinectApp.Properties"
+        Title="Main Window" Width="1000" Height="768">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Microsoft.Samples.Kinect.WpfViewers;component/KinectControlResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        	<Storyboard x:Key="FlyIn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AnimationCanvas">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Ellipse">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="-132.25"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="17.75"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:2" Value="22.25"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="-4.372"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-4.25"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-3.25"/>
+        		</DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="TextBlock">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="-88"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="18.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="0.065"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.55"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.01"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="0.07"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.55"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.01"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="20"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Top)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="20"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="TextBlock">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="100"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="100"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="TextBlock">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="40"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<StringAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Text)" Storyboard.TargetName="TextBlock">
+                    <DiscreteStringKeyFrame KeyTime="0" Value="Recording!"/>
+                </StringAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TextBlock">
+        			<EasingDoubleKeyFrame KeyTime="0" Value="-1.5"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        		</DoubleAnimationUsingKeyFrames>
+        	</Storyboard>
+        	<Storyboard x:Key="RecordingSaved">
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Ellipse">
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextBlock">
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TextBlock">
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-72"/>
+        		</DoubleAnimationUsingKeyFrames>
+        		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="TextBlock">
+        			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+        			<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1.5"/>
+        		</DoubleAnimationUsingKeyFrames>
+                <StringAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Text)" Storyboard.TargetName="TextBlock">
+                    <DiscreteStringKeyFrame KeyTime="0:0:0.5" Value="Recording saved!"/>
+                    <DiscreteStringKeyFrame KeyTime="0:0:1" Value="Recording saved!"/>
+                </StringAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AnimationCanvas">
+                    <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0.99"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- The main viewer -->
+    <Grid>
+        <Grid Name="MainViewerHost">
+            <Grid Name="ColorVis" Background="{StaticResource DarkNeutralBrush}">
+                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform">
+                    <!-- Make the colorViewer and skeletonViewer overlap entirely. -->
+                    <Grid>
+                        <kt:KinectColorViewer x:Name="ColorViewer" KinectSensorManager="{Binding KinectSensorManager}" CollectFrameRate="True" RetainImageOnSensorChange="True" />
+                        <Canvas Height="0" VerticalAlignment="Top">
+                            <!--The skeleton view-->
+                            <kt:KinectSkeletonViewer 
+                                    KinectSensorManager="{Binding KinectSensorManager}"
+                                    Visibility="{Binding SkeletonViewEnabled, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    Width="{Binding ElementName=ColorViewer,Path=ActualWidth}"
+                                    Height="{Binding ElementName=ColorViewer,Path=ActualHeight}"
+                                    ImageType="Color" />
+                        </Canvas>
+                    </Grid>
+                </Viewbox>
+                <!--FPS viewer-->
+                <Border 
+                        TextBlock.Foreground="{StaticResource LabelForegroundBrush}" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Background="{StaticResource MediumNeutralBrush}"
+                        Width="50" Height="50">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock FontSize="{StaticResource HeaderFontSize}" Text="{Binding ElementName=ColorViewer, Path=FrameRate}" HorizontalAlignment="Center" Margin="-2"/>
+                        <TextBlock FontSize="{StaticResource FPSFontSize}" HorizontalAlignment="Center" Margin="-2">FPS</TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+        
+        <Canvas x:Name="AnimationCanvas">
+            <Ellipse x:Name="Ellipse" Width="50" Height="50" Fill="Red" Canvas.Left="20" Canvas.Top="20" RenderTransformOrigin="0.5,0.5" >
+            	<Ellipse.RenderTransform>
+            		<TransformGroup>
+            			<ScaleTransform/>
+            			<SkewTransform/>
+            			<RotateTransform/>
+            			<TranslateTransform/>
+            		</TransformGroup>
+            	</Ellipse.RenderTransform>
+            </Ellipse>
+            <TextBlock x:Name="TextBlock" Text="Recording saved!" Canvas.Left="100" Canvas.Top="20" FontSize="40" FontWeight="Bold" UseLayoutRounding="True" RenderTransformOrigin="0.5,0.5">
+            	<TextBlock.RenderTransform>
+            		<TransformGroup>
+            			<ScaleTransform/>
+            			<SkewTransform/>
+            			<RotateTransform/>
+            			<TranslateTransform/>
+            		</TransformGroup>
+            	</TextBlock.RenderTransform>
+            </TextBlock>
+        </Canvas>
+        
+        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding MessageViewVisibility}" Background="YellowGreen">
+            <StackPanel Margin="50">
+                <Viewbox Stretch="Uniform" Width="120" Height="120">
+                    <controls:LoadingControl/>
+                </Viewbox>
+                <TextBlock Text="{Binding KinectStatusText, FallbackValue={x:Static p:Resources.WaitingForConnection}, TargetNullValue={x:Static p:Resources.WaitingForConnection}}" FontSize="40pt" TextAlignment="Center" Foreground="White" MaxWidth="500" TextWrapping="Wrap" Margin="0,10,0,0" />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

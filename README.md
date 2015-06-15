@@ -2,7 +2,7 @@
 
 Robodily Fusion means programming robots by using body movements. The project made with the Microsft Kinect and the NAO robot. It's focused on children and supports children with a disability by using voice commands.
 
-This project was my bachelor thesis on my Erasmus internship at Halmstad University (Sweden), in collaboration with M. Geerinck. 
+This project was my Erasmus internship at Halmstad University (Sweden), in collaboration with M. Geerinck. 
 
 ## Features ##
 
